@@ -9,7 +9,7 @@
 
 </head>
 <body id="restaurant">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

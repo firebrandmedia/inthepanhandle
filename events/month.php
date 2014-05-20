@@ -7,7 +7,7 @@
 {embed="embeds/css_js"}
 </head>
 <body id="event_cal">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

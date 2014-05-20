@@ -30,7 +30,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 </head>
 <body id="movies">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

@@ -12,7 +12,7 @@
 <script type="text/javascript" src="/js/swfobject.js"></script>
 </head>
 <body id="more">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

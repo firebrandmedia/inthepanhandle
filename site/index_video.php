@@ -17,7 +17,7 @@
 {embed="embeds/css_js"}
 </head>
 <body id="home">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

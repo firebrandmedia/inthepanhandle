@@ -17,7 +17,7 @@
 {exp:foxee:headers}
 </head>
 <body id="more">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

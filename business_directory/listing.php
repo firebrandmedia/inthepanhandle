@@ -94,7 +94,7 @@ function createMarker(latlng, name, html) {
 
 </head>
 <body id="business" onload="initialize()">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

@@ -11,7 +11,7 @@
 {exp:shrimp:meta_tag template="e" entry_id="{entry_id}"}
 </head>
 <body id="event_cal">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">

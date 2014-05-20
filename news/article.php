@@ -39,7 +39,7 @@ $(window).load(function() {
 {exp:shrimp:meta_tag template="n" entry_id="{entry_id}"}
 </head>
 <body id="news">
-{embed="embeds/iphone"}
+{search}
 <div id="content">
 <div id="header">
 <div id="header_content">
