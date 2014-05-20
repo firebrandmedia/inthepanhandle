@@ -1,0 +1,60 @@
+{assign_variable:master_weblog_name="bus_dir"}
+{exp:rss:feed weblog="{master_weblog_name}"}
+
+<?xml version="1.0" encoding="{encoding}"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+    <channel>
+
+    <title>{exp:xml_encode}InThePanhandle.com Business Directory{/exp:xml_encode}</title>
+    <link>{path='SITE_INDEX'}/business_directory/</link>
+    <description>New Business Listings on InThePanhandle.com</description>
+    <dc:language>{weblog_language}</dc:language>
+    <dc:creator>{email}</dc:creator>
+    <dc:rights>Copyright {gmt_date format="%Y"}</dc:rights>
+    <dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+    <admin:generatorAgent rdf:resource="http://expressionengine.com/" />
+
+{exp:weblog:entries weblog="{master_weblog_name}" limit="25" rdf="off" dynamic_start="on" disable="member_data|trackbacks"}
+    <item>
+      <title>{exp:xml_encode}{title}{/exp:xml_encode}</title>
+      <link>{title_permalink=business_directory/listing}</link>
+      <guid>{title_permalink=business_directory/listing}</guid>
+      <description><![CDATA[
+{if file}<img src="{file_thumb}" title="{title} Logo">{/if}
+<span style="font-family: Arial,helvetica,sans-serif;">
+{business}
+<img src="{exp:tracker:pixeltrack weblog="bus_dir" entry_id="{entry_id}" entry_identifier="{entry_id}"}" />
+<h4>Offline Contact Information</h4>
+{if address}<b>Address:</b><br /> {address}<br />{/if}
+{if city}{city}{/if} {if state}{state}{/if}, {if zip}{zip}<br />{/if}
+{if manager}<b>Contact Person:</b> {manager}<br />{/if}
+{if phone}<b>Phone:</b> {phone}<br />{/if}
+{if fax}<b>Fax:</b> {fax}<br />{/if}
+{if mobile}<b>Mobile:</b> {mobile}<br />{/if}
+
+<h4>Online Contact Information</h4>
+{if website}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/www.png"/> {website}<br />{/if}
+{if email_address}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/email.png"/>  <a href="mailto:{email_address}">{email_address}</a><br />{/if}
+{if twitter}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/twitter.png"/> <a rel="nofollow" href="http://www.twitter.com/{twitter}">@{twitter}</a><br />{/if}
+{if linkedin}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/linkedin.png"/> {linkedin}<br />{/if}
+{if youtube}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/youtube.png"/> {youtube}<br />{/if}
+{if facebook}<img align="absmiddle" src="http://www.inthepanhandle.com//images/icons/social/facebook.png"/> {facebook}<br />{/if}
+<geo:lat>{latitude}</geo:lat>
+<geo:long>{longitude}</geo:long>
+</span>
+]]></description>
+      <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
+      <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:15%Q"}</dc:date>
+    </item>
+{/exp:weblog:entries}
+
+    </channel>
+</rss>
+
+{/exp:rss:feed}

@@ -1,0 +1,58 @@
+{assign_variable:master_weblog_name="coupons"}
+{exp:rss:feed weblog="{master_weblog_name}"}
+
+<?xml version="1.0" encoding="{encoding}"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+    <channel>
+
+    <title>{exp:xml_encode}InThePanhandle.com Coupons{/exp:xml_encode}</title>
+    <link>{path='SITE_INDEX'}/business_directory/coupons/</link>
+    <description>New Coupons on InThePanhandle.com</description>
+    <dc:language>{weblog_language}</dc:language>
+    <dc:creator>{email}</dc:creator>
+    <dc:rights>Copyright {gmt_date format="%Y"}</dc:rights>
+    <dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+    <admin:generatorAgent rdf:resource="http://expressionengine.com/" />
+
+{exp:weblog:entries weblog="{master_weblog_name}" limit="100" rdf="off" dynamic_start="on" disable="member_data|trackbacks"}
+    <item>
+      <title>{exp:xml_encode}{title} - {app_business_name}{/exp:xml_encode}</title>
+      <link>{title_permalink=business_directory/coupons}</link>
+      <guid>{title_permalink=business_directory/coupons}#When:{gmt_entry_date format="%H:%i:%sZ"}</guid>
+      <description><![CDATA[
+<span style="font-family: Arial,helvetica,sans-serif;">
+{if coupon_file != ''}
+{if coupon_number}<b>Coupon Number: {coupon_number}</b>{/if}
+{if expiration_date}Expiration Date: {expiration_date format="%m/%d/%Y"}{/if}
+<center><img class="coupon_image" src="{coupon_file}"/></center>
+<div class="clear_both"></div>
+{/if}
+
+{if coupon_file == ''}
+<h4>{coupon_offer}</h4>
+{if coupon_number}<b>Coupon Number: {coupon_number}</b>{/if}
+{if expiration_date}Expiration Date: {expiration_date format="%m/%d/%Y"}{/if}
+<p>{coupon_offer_details}</p>
+<p>{coupon_fine_print}</p>
+{/if}
+
+<b><a href="{title_permalink=business_directory/coupons}">View complete details including phone, email & map to business.</a></b>
+</span>
+<img src="{exp:tracker:pixeltrack weblog="coupons" entry_id="{entry_id}" entry_identifier="{entry_id}"}" />
+]]>
+</description>
+      <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
+      <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:15%Q"}</dc:date>
+    </item>
+{/exp:weblog:entries}
+
+    </channel>
+</rss>
+
+{/exp:rss:feed}

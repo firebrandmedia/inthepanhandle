@@ -1,0 +1,1 @@
+{exp:favorites:save}
