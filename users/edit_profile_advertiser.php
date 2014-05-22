@@ -52,7 +52,7 @@
 <li><a href="http://www.inthepanhandle.com/itpcore/" title="The Control Panel is used to add content (business listing, products, images, coupons, etc.)">Control Panel</a></li>
 <li><a href="{path=''support/help_request"}?height=400&width=380" class="thickbox" title="Get Help!"">Submit Support Request</a></li>
 <li><a href="{path='SITE_INDEX'}/itp_blog/" title="InThePanhandle.com Blog">ITP Blog</a></li>
-<li><a href="{path='SITE_INDEX'}/itp_blog/article/the_fix_list/" title="Known Issues"">ITP Fix-Me List</a></li>
+<li><a href="{path='SITE_INDEX'}/itp_blog/article/the_fix_list/" title="Known Issues">ITP Fix-Me List</a></li>
 </ul>
 </div>
 <div class="related_content_box">

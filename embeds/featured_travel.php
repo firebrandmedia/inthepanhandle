@@ -21,7 +21,7 @@
 <h2>Destinations Rated by Our Visitors</h2>
 <ul>
 {exp:rating:rankings limit="10" weblog="bus_dir" category="100|101|99|313|106|251|252|254|255"}
-<li>{exp:rating:stats entry_id="{entry_id}" precision="1"}{stars_avg_rating} ({avg_rating}/5){/exp:rating:stats} <a href="{title_permalink=business_directory/listing"}">{title}</a></li>
+<li>{exp:rating:stats entry_id="{entry_id}" precision="1"}{stars_avg_rating} ({avg_rating}/5){/exp:rating:stats} <a href="{title_permalink=business_directory/listing}">{title}</a></li>
 {/exp:rating:rankings}
 <ul>
 </div>
