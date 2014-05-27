@@ -11,7 +11,8 @@ InThePanhandle.com Redesign
 Removed unused templates
 
 Removed embeds from the following template groups
-    - business_directory
+   
+   - business_directory
     - gov
     - events
     - itp_blog
@@ -25,6 +26,7 @@ Removed embeds from the following template groups
     - users
 
 Deprecated directories that were not updated
+    
     - advertise
     - embeds (bloody embeds!)
     - Global Variables
@@ -32,12 +34,12 @@ Deprecated directories that were not updated
     - xml_sitemaps
     
 ==============
-
 05/27/14
 ==============
 
 Removed Splitter code from the following
-    - events/index
+   
+   - events/index
     - events/by_category
     - events/month
     - news/index
@@ -50,6 +52,7 @@ Removed Randomizer plugin
 Removed Blogger Listing plugin
 
 Removed Category Parent Style code from the following
+    
     - business_directory/index
     
 Removed Category Parent Style plugin
@@ -59,6 +62,7 @@ Removed {exp:cp_access} code from multiple files via Find / Replace
 Removed CP Access plugin
 
 Removed the FLV Media code from the following
+    
     - support/tutorials
     - support/tutorial_details
 
@@ -67,6 +71,7 @@ Removed FLV Media plugin
 Removed Who’s Online plugin
 
 Removed LG Better Meta code from:
+    
     - business_directory/listing
     - xml_sitemaps/
     
@@ -75,6 +80,7 @@ Added standard EE code to <Title> Tags for business title
 Removed LG Better Meta plugin and disabled extension
 
 Removed MD Eexcerpt Code from:
+    
     - site/index
     - business_directory/archives
     - events/index
