@@ -2,8 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-{exp:lg_better_meta_pl:template url_title="{segment_3}"}
+<title>{exp:weblog:entries channel="bus_dir" limit="1"}{title}{/exp:weblog:entries} | Business Directory | InThePanhandle.com | Your Eastern WV Community Website</title>
 
 <!--Stylesheets-->
 <link rel="stylesheet" href="/css/itp.css" type="text/css" media="screen">
@@ -227,7 +226,7 @@ function createMarker(latlng, name, html) {
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>

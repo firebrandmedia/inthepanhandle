@@ -126,7 +126,7 @@ $().ready(function() {
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>
@@ -176,9 +176,7 @@ $().ready(function() {
 {exp:weblog:entries weblog="itp_blog" orderby="date" sort="desc"}
 <h2>{title}</h2>
 {if article_thumbnail}{article_thumbnail}<img class="article_image_thumbnail" src="{file_thumb_url}" border="0" alt="image">{/article_thumbnail}{/if}
-<p>{exp:md_eexcerpt if_exceeds="75" stop_after="50" append="&nbsp;&hellip;" the_link="<a href='{title_permalink=itp_blog/article}'>Continue Reading {title}</a>"}
-{body}
-{/exp:md_eexcerpt} <span class="article_author"> <b>Author:</b> {author} | <b>Published:</b> {entry_date format="%m/%d/%Y"} | {exp:tracker:stats weblog="itp_blog" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views</span></p>
+<p>{exp:char_limit total="120"}{body}{/exp:char_limit}<a href='{title_permalink=itp_blog/article}'>Continue Reading</a><span class="article_author"> <b>Author:</b> {author} | <b>Published:</b> {entry_date format="%m/%d/%Y"} | {exp:tracker:stats weblog="itp_blog" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views</span></p>
 {/exp:weblog:entries}
 
 </div>

@@ -125,7 +125,7 @@ $().ready(function() {
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>
@@ -173,13 +173,13 @@ $().ready(function() {
 {embed="embeds/bus_dir_search"}
 <div id="biz_categories">
 <h2>Eastern WV Business Directory by Category</h2>
-{exp:cat_parent_style:apply class="parent"}
+
 {exp:weblog:categories weblog="bus_dir"}
-{exp:cat_parent_style:check cat_id="{category_id}"}
+
 <a href="{path='business_directory/cat_listings/'}">{category_name}</a>
-{/exp:cat_parent_style:check}
+
 {/exp:weblog:categories}
-{/exp:cat_parent_style:apply}
+
 </div>
 </div>
 <div id="footer">

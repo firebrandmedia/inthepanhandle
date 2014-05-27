@@ -68,7 +68,7 @@
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>
@@ -149,9 +149,7 @@
 {exp:weblog:entries weblog="event_cal" orderby="date" limit="1" sort="asc" dynamic="off" start_on="{current_time format='%Y-%m-%d %H:%i'}" show_future_entries="yes" disable="pagination|categories|category_fields|member_data|trackbacks" category="not 321"}
 <h2>Featured Event: <br />
 <a href="{title_permalink=events/details}">{title}</a> | {entry_date format="%m. %d. %Y"}</h2>
-<p>{exp:md_eexcerpt if_exceeds="75" stop_after="50" append="&nbsp;&hellip;" the_link="<a href='{title_permalink=events/details}'>Continue Reading</a>"}
-{event_details}
-{/exp:md_eexcerpt}</p>
+<p>{exp:char_limit total="120"}{event_details}{/exp:char_limit} <a href='{title_permalink=events/details}'>Continue Reading</a></p>
 {/exp:weblog:entries}
 </div>
 <div id="upcoming_evnts">

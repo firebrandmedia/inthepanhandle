@@ -5,9 +5,7 @@
 {exp:weblog:entries weblog="event_cal" orderby="date" limit="1" sort="asc" dynamic="off" start_on="{current_time format='%Y-%m-%d %H:%i'}" show_future_entries="yes" disable="pagination|categories|category_fields|member_data|trackbacks" category="not 321"}
 <h2>Featured Event: <br />
 <a href="{title_permalink=events/details}">{title}</a> | {entry_date format="%m. %d. %Y"}</h2>
-<p>{exp:md_eexcerpt if_exceeds="75" stop_after="50" append="&nbsp;&hellip;" the_link="<a href='{title_permalink=events/details}'>Continue Reading</a>"}
-{event_details}
-{/exp:md_eexcerpt}</p>
+<p>{exp:char_limit total="120"}{event_details}{/exp:char_limit} <a href='{title_permalink=events/details}'>Continue Reading</a></p>
 {/exp:weblog:entries}
 </div>
 <div id="upcoming_evnts">

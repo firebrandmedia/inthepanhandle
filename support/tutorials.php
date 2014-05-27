@@ -69,7 +69,7 @@
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>
@@ -114,9 +114,8 @@
 <div id="video_tutorials">
 <div class="featured_video">
 {exp:weblog:entries weblog="video_tutorials" limit="1" orderby="random"}
-{exp:flvplugin playerpath="/video/player.swf" file="http://www.youtube.com/watch?v={youtube_id}" playernumber="{entry_id}" width="660" height="500" controlbar="none" stretching="fill" backcolor="ffffff" frontcolor="000000" skin="/video_skin/modieus.swf" image="http://img.youtube.com/vi/{youtube_id}/0.jpg"}
 <h2>Featured Tutorial: {title}</h2>
-<div id="player{entry_id}"></div>
+<div><a href="{title_permalink=support/tutorial_details}">{title}</a></div>
 {/exp:weblog:entries}
 </div>
 <div id="recently_added_videos">

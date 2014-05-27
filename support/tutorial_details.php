@@ -65,7 +65,7 @@
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
 <li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
-{exp:cp_access}<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>{/exp:cp_access}
+<li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
 </div>
@@ -108,10 +108,9 @@
 <div id="body_content">
 <div id="article_content">
 {exp:weblog:entries weblog="video_tutorials"}
-{exp:flvplugin playerpath="/video/player.swf" file="http://www.youtube.com/watch?v={youtube_id}" playernumber="{entry_id}" width="650" height="450" stretching="uniform" backcolor="ffffff" frontcolor="7B1E23" skin="/video_skin/modieus.swf" image="http://img.youtube.com/vi/{youtube_id}/0.jpg"}
 <h1>Tutorial: {title}</h1>
 <p class="tutorial_author"><b>Author:</b> {author} | <b>Published:</b> {entry_date format="%m/%d/%Y"} | {exp:tracker:stats weblog="news" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views</p>
-<div id="player{entry_id}"></div>
+<div>{video_description}</div>
 <img src="{exp:tracker:pixeltrack weblog="video_tutorials" entry_id="{entry_id}" entry_identifier="{entry_id}"}" />
 </div>
 <div id="related_content">

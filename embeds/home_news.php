@@ -8,9 +8,7 @@
 {exp:weblog:entries weblog="news" orderby="date" sort="desc" limit="1" dynamic="off" category="281" disable="pagination|category_fields||member_data|trackbacks"}
 <h2><a href="{title_permalink=news/article}">{title}</a></h2>
 {if article_thumbnail}{article_thumbnail}<img class="article_image_thumbnail" src="{file_thumb_url}" border="0" alt="image">{/article_thumbnail}{/if}
-<p>{exp:md_eexcerpt if_exceeds="75" stop_after="50" append="&nbsp;&hellip;" the_link="<a href='{title_permalink=news/article}'>Continue Reading {title}</a>"}
-{body}
-{/exp:md_eexcerpt}</p>
+<p>{exp:char_limit total="120"}{body}{/exp:char_limit}<a href='{title_permalink=news/article}'>Continue Reading</a></p>
 {/exp:weblog:entries}
 </div>
 <div id="recent_news">
