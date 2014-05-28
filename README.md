@@ -10,9 +10,9 @@ InThePanhandle.com Redesign
 
 Removed unused templates
 
-Removed embeds from the following template groups
+Removed embeds from the following template groups:
    
-   - business_directory
+    - business_directory
     - gov
     - events
     - itp_blog
@@ -39,7 +39,7 @@ Deprecated directories that were not updated
 
 Removed Splitter code from the following
    
-   - events/index
+    - events/index
     - events/by_category
     - events/month
     - news/index
