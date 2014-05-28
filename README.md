@@ -37,7 +37,7 @@ Deprecated directories that were not updated
 ==============
 Prepared plugins, modules and extensions in advance of EE2 upgrade. Uninstalled unused add-ons and removed related code from templates.
 
-Removed Splitter code from the following
+Removed Splitter code from the following:
    
     - events/index
     - events/by_category
@@ -51,17 +51,17 @@ Removed Randomizer plugin
 
 Removed Blogger Listing plugin
 
-Removed Category Parent Style code from the following
+Removed Category Parent Style code from the following:
     
     - business_directory/index
-    
+
 Removed Category Parent Style plugin
 
 Removed {exp:cp_access} code from multiple files via Find / Replace
 
 Removed CP Access plugin
 
-Removed the FLV Media code from the following
+Removed the FLV Media code from the following:
     
     - support/tutorials
     - support/tutorial_details
@@ -74,11 +74,11 @@ Removed LG Better Meta code from:
     
     - business_directory/listing
     - xml_sitemaps/
-    
+
 Added standard EE code to Title Tags for:
 
     - business_directory/listing
-    
+
 Removed LG Better Meta plugin and disabled extension
 
 Removed MD Eexcerpt Code from:
