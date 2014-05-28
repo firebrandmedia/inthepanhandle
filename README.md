@@ -33,9 +33,9 @@ Deprecated directories that were not updated
     - itpwv_app (nothing to see here)
     - xml_sitemaps
 
-==============
 05/27/14
 ==============
+Prepared plugins, modules and extensions in advance of EE2 upgrade. Uninstalled unused add-ons and removed related code from templates.
 
 Removed Splitter code from the following
    
