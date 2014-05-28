@@ -75,7 +75,9 @@ Removed LG Better Meta code from:
     - business_directory/listing
     - xml_sitemaps/
     
-Added standard EE code to <Title> Tags for business title
+Added standard EE code to Title Tags for:
+
+    - business_directory/listing
     
 Removed LG Better Meta plugin and disabled extension
 
