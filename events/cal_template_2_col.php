@@ -1,7 +1,8 @@
+{exp:fbc:prepare_page}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Search Results | InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>Upcoming Local Events | InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
 
@@ -12,6 +13,12 @@
 <link rel="stylesheet" href="/nivo_slider/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/nivo_slider/themes/default/default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
+
+<!--[if gte IE 7]>
+  <style type="text/css">
+    #fc_calendar .event { width: 80px; }
+  </style>
+<![endif]-->
 
 <!--Mobile Specific-->
 <link rel="apple-touch-icon" href="http://inthepanhandle.com/images/ui/iphonetouch.jpg">
@@ -85,9 +92,9 @@
         });
     });
 </script>
-
+{exp:shrimp:meta_tag template="e" entry_id="{entry_id}"}
 </head>
-<body id="more">
+<body id="event_cal">
 {if logged_in && member_group == "1"}
     <div style="position: absolute; top: 0; left: 0; position: fixed; background-color: #000; color: #fff; font-size: 9px; padding: 5px;">
         {elapsed_time} seconds / {total_queries} queries
@@ -102,15 +109,12 @@
 </div>
 </div>
 </div>
-
 <div id="content">
 <div id="header">
 <div id="header_content">
-<!--Logo Global Variable-->
-    <div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
-<!--Logo Global Variable-->
-<!--Navigation Global Variable-->
-    <div id="navigation">
+<div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
+
+<div id="navigation">
 <div id="nav">
 <ul>
 <li id="t-home"><a href="{path='SITE_INDEX'}/" title="The InThePanhandle.com Homepage">Home</a></li>
@@ -133,7 +137,7 @@
 </ul>
 </div>
 </div>
-<!--Navigation Global Variable-->
+
 <div class="clear_both"></div>
 </div>
 </div>
@@ -188,49 +192,23 @@
 </div>
 </div>
 <div id="body_content">
-<!--Search Results Here-->
-<div id="search_results_page">
-<h1>Thank you for searching with us. Here's what we found…</h1>
-<p class="your_results">Your search for <span class="hilite">{exp:search:keywords}</span> found {exp:search:total_results}{total_results}{/exp:search:total_results} result{if "{exp:search:total_results}" != 1}s{/if}.</p>
+<!--Main Calendar Content Here-->
+    <div id="event_calendar_details">
 
-<table class="search_results" cellpadding="10" cellspacing="0" width="100%">
-<tr>
-<th align="left">{lang:title}</th>
-<th align="left">{lang:excerpt}</th>
-</tr>
-<tr>
-{exp:key_search:results groupby="channel" group_sort="asc" group_repeat="no" excerpt_size="60" parameters=”highlight”}
-{if weblog_id=="28"}
-<td class="{switch}" width="30%" valign="top"><b><a href="{site_url}local/events/details/{entry_id}">{title}</a></b></td>
-<td class="{switch}" width="70%" valign="top">{excerpt}</td>
-{if:else}
-<td class="{switch}" width="40%" valign="top"><b><a href="{auto_path}">{title}</a></b></td>
-<td class="{switch}" width="60%" valign="top">{excerpt}</td>
-{/if}
-</tr>
+    </div>
+<!--Main Calendar Content Here-->
 
-{/exp:key_search:results}
+<!--Sidebar Calendar Content Here-->
+    <div id="event_sidebar">
 
-</table>
+        {embed="testcalinc/side_column"}
 
+    </div>
+<!--Sidebar Calendar Content Here-->
 
-<p class="try_advanced">Not exactly what you were looking for?  How about trying our <a href="{site_url}local/search/advanced/">Advanced Search?</a> It's super-terrific!</p>
-<div id="paginate">
-{exp:bu_search_pagination}
-{if prev_page_path}
- <a href="{path={prev_page_path}}">&#8592; Prev</a>
-{/if}
-
-Page {current_page} of {total_pages}
-
-{if next_page_path}
- <a href="{path={next_page_path}}">Next &#8594;</a>
-{/if}
-{/exp:bu_search_pagination}
+<div class="clear_both"></div>
 </div>
-</div>
-<!--Search Results Here-->
-</div>
+
 <div id="footer">
 <div id="footer_nav">
 <div id="destination">
@@ -362,4 +340,3 @@ woopraTracker.track();
 
 </body>
 </html>
-

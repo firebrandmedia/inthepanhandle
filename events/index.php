@@ -1,19 +1,30 @@
+{exp:fbc:prepare_page}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-<!--Calendar Index-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>{segment_3}/{segment_2} Events | InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>Upcoming Local Events | InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
-<meta name="apple-itunes-app" content="app-id=384904457">
 
+<!--Stylesheets-->
 <link rel="stylesheet" href="/css/itp.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/css/thickbox.css" type="text/css" media="screen" />
 <link rel='stylesheet' type='text/css' media='screen' href='/css/jqModal.css' />
-
+<link rel="stylesheet" href="/nivo_slider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/nivo_slider/themes/default/default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
 
+<!--[if gte IE 7]>
+  <style type="text/css">
+    #fc_calendar .event { width: 80px; }
+  </style>
+<![endif]-->
+
+<!--Mobile Specific-->
 <link rel="apple-touch-icon" href="http://inthepanhandle.com/images/ui/iphonetouch.jpg">
+<meta name="apple-itunes-app" content="app-id=384904457">
+
+<!--RSS Feeds-->
 <link rel="alternate" type="application/rss+xml" title="ITP Articles Feed" href="{path='SITE_INDEX'}/media/news_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP Event Cal Feed" href="{path='SITE_INDEX'}/media/events_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP New Businesses Feed" href="{path='SITE_INDEX'}/media/business_rss/" />
@@ -21,30 +32,14 @@
 <link rel="alternate" type="application/rss+xml" title="ITP New Coupons Feed" href="{path='SITE_INDEX'}/media/coupons_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP Flickr Feed" href="http://feeds.feedburner.com/UploadsFromInthepanhandlecom/" />
 
-<script type="text/javascript" src="http://use.typekit.com/jik1hqx.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<script type='text/javascript' src='/js/jquery-1.2.1.pack.js'></script>
-<script type="text/javascript" src="/js/thickbox.js"></script>
-<script type="text/javascript" src="/js/s3Slider.js"></script>
-<script type="text/javascript" src="/js/swfobject.js"></script>
-<script src='/js/jqModal.js' type='text/javascript'></script>
+<!--JS Files-->
+<!--<script type="text/javascript" src="http://use.typekit.com/jik1hqx.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js'></script>
+<script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
 
-<script type="text/javascript">
-$().ready(function() {
-  var triggers = $('a.ex3bTrigger');
-  $('#ex3b').jqm({
-   trigger: triggers,
-    ajax: '@href',
-    target: 'div.jqmAlertContent',
-    overlay: 0
-    });
-  if($.browser.msie) {
-  $('div.jqmAlert .jqmClose').hover(
-    function(){ $(this).addClass('jqmCloseHover'); },
-    function(){ $(this).removeClass('jqmCloseHover'); });
-  }
-});
-</script>
+<!--JS Scripts-->
+<!--Twitter Menu Drop Down-->
 <script type="text/javascript">
         $(document).ready(function() {
 
@@ -67,24 +62,53 @@ $().ready(function() {
         });
 </script>
 
+<!--Save as Favorite-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('a.Favorites_Save') .click (function() {
+            var link = $(this).attr('href')
+            $('.Favorites_Status').load(link, function() {
+                    $('.Favorites_Delete').show();
+                });
+            $(this).hide();
+            return false;
+        });
+        $('a.Favorites_Save_Full') .click (function() {
+            var link = $(this).attr('href')
+            $('.Favorites_Status').load(link, function() {
+                    $('.Favorites_Delete').show();
+                });
+            $(this).hide();
+            return false;
+        });
+
+        $('a.Favorites_Delete') .click (function() {
+            var link = $(this).attr('href')
+            $('.Favorites_Status').load(link, function() {
+                    $('.Favorites_Save').show();
+                });
+            $(this).hide();
+            return false;
+        });
+    });
+</script>
+{exp:shrimp:meta_tag template="e" entry_id="{entry_id}"}
 </head>
 <body id="event_cal">
-<!-- Search Global Variable -->
-    {if logged_in && member_group == "1"}
+{if logged_in && member_group == "1"}
     <div style="position: absolute; top: 0; left: 0; position: fixed; background-color: #000; color: #fff; font-size: 9px; padding: 5px;">
         {elapsed_time} seconds / {total_queries} queries
     </div>
 {/if}
 <div id="search_box">
 <div id="search">
-{exp:search:simple_form weblog="news|bus_dir|event_cal|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
+{exp:search:simple_form weblog="news|bus_dir|calendar_events|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
 <p><input class="txt" type="text" name="keywords" id="keywords" onfocus="if
 (this.value==this.defaultValue) this.value='';" value="I'm looking for…" size="18" maxlength="100" /> <input type="image" src="/images/ui/search_btn.gif" align="right" value="Search" /></p>
 {/exp:search:simple_form}
 </div>
 </div>
 </div>
-<!-- Search Global Variable -->
 <div id="content">
 <div id="header">
 <div id="header_content">
@@ -95,7 +119,7 @@ $().ready(function() {
 <ul>
 <li id="t-home"><a href="{path='SITE_INDEX'}/" title="The InThePanhandle.com Homepage">Home</a></li>
 <li id="t-news"><a href="{path='SITE_INDEX'}/news/" title="Eastern WV News, Articles, Opinion">News</a></li>
-<li id="t-event_cal"><a href="{path='SITE_INDEX'}/events/{current_time format="%Y"}/{current_time format="%m"}/{current_time format="%d"}/" title="Upcoming Events in Martinsburg, Berkeley Springs, Shepherdstown…">Events</a></li>
+<li id="t-event_cal"><a href="{path='SITE_INDEX'}/events/" title="Upcoming Eastern Panhandle Events">Events</a></li>
 <!--<li id="t-shopping"><a href="{path='SITE_INDEX'}/shop_local/" title="Shop Local: Eastern Panhandle Marketplace">Shop Local</a></li>
 <li id="t-movies"><a href="{path='SITE_INDEX'}/events/movie_showtimes?zipcode=25401" title="Local movie showtimes and online ticket ordering">Movies</a></li>-->
 <li id="t-restaurant"><a href="{path='SITE_INDEX'}/business_directory/restaurant_menus/" title="View and Print Local Restaurant Menus">Restaurant Menus</a></li>
@@ -165,70 +189,63 @@ $().ready(function() {
 <div id="advertising">
 <div id="ads">
 
-
 </div>
 </div>
 <div id="body_content">
-<div id="event_calendar">
-<!-- Calendar Categories Code -->
-<div id="cal_categories">
-<h2>View Events by Category</h2>
+<!--Main Calendar Content Here-->
+    <div id="event_calendar_details">
+		<div id="maincolumn">
 
-{exp:weblog:categories weblog="event_cal" id="my_custom_id"}
-<a href="{path=events/by_category}{segment_2}/{segment_3}/">{category_name}</a>
-{/exp:weblog:categories}
+			<h2>Upcoming Local Events</h2>
+			<div id="leftcolumn">
+
+<div id="wc_calendar">
+
+<div class="calendars" style="float:left;width:210px;">
+    <h4>Events by Month</h4>
+    <ul>
+   {exp:calendar:month_list date_range_start="0 months ago" date_range_end="6 months" limit="100"}
+       <li><a href="{path='events/month'}{month format="%Y/%m"}/">{month format="%F, %Y"}</a></li>
+   {/exp:calendar:month_list}
+    </ul></p>
+</div>
+
+<div class="calendars" style="float:left;width:415px;margin-left:15px;">
+    <h4>Events by Calendar</h4>
+    <ul>
+   {exp:calendar:calendars dynamic="off" sort="asc" orderby="title"}
+       <li><h3><a href="{path='events/calendars'}{calendar_url_title}/">{calendar_title}</a></h3>
+          <ul>
+             <li>View by: <a href="{path='events/month/by_calendar'}{calendar_url_title}/">Month</a> | <a href="{path='events/week/by_calendar'}{calendar_url_title}/">Week</a> | <a href="{path='events/day/by_calendar'}{calendar_url_title}/">Day</a></li>
+             <li>Upcoming Events:</li>
+          </ul>
+          <ul>
+{embed="events/calendar_events" calendar_id="{calendar_id}" event_limit="5"}
+          </ul></li>
+   {/exp:calendar:calendars}
+    </ul></p>
+</div>
+
+</div>
+			</div>
+
+		</div>
+
+
+    </div>
+<!--Main Calendar Content Here-->
+
+<!--Sidebar Calendar Content Here-->
+    <div id="event_sidebar">
+
+        {embed="events/side_column"}
+
+    </div>
+<!--Sidebar Calendar Content Here-->
 
 <div class="clear_both"></div>
 </div>
-<!-- Calendar Categories Code End -->
 
-<!--Begin Calendar Month Navigation -->
-{embed="events/month_nav"}
-<!--End Calendar Month Navigation -->
-
-<div class="jqmAlert" id="ex3b">
-
-<div id="ex3b" class="jqmAlertWindow">
-    <div class="jqmAlertTitle clearfix">
-    <a href="#" class="jqmClose"><em>Close</em></a>
-  </div>
-
-  <div class="jqmAlertContent">
-  <p>Please wait... <img src="http://www.inthepanhandle.com/images/ui/throbber.gif" alt="loading" /></p>
-  </div>
-
-</div>
-
-</div>
-
-{exp:repeet:parse date_header_interval="month"}
-{repeet:no_results}<h1>Sorry, we have no events.  How about adding some?</h1>{/repeet:no_results}
-{repeet:date_header}<h1>Local Events for %F…</h1>{/repeet:date_header}
-{exp:repeet:get_ids weblog="event_cal" parse="inward" dynamic="on" show_expired="yes" show_future_entries="yes"}
-{exp:weblog:entries weblog="event_cal" entry_id="{repeet:entry_ids}" dynamic="off" show_expired="yes" show_future_entries="yes"}
-{repeet:item}
-{repeet:entry_id}{entry_id}{/repeet:entry_id}
-{repeet:entry_date}{entry_date format="%Y-%m-%d %H:%i"}{/repeet:entry_date}
-{repeet:expiration_date}{expiration_date format="%Y-%m-%d %H:%i"}{/repeet:expiration_date}
-{repeet:interval}{repeat_interval}{/repeet:interval}
-{repeet:display}
-<div class="event_month">{repeet:start_time format="%D"}</div>
-<div class="event_date">{repeet:start_time format="%d"}</div>
-<div class="event_details">
-<h3>{title}</h3><div class="clear_both"></div>
-<p>{exp:char_limit total="75"}{event_details}{/exp:char_limit} <a href='{title_permalink=events/details}'>Click for {title} event details</a></p>
-</div>
-<div class="clear_both"></div>
-{/repeet:display}
-{/repeet:item}
-{/exp:weblog:entries}
-{/exp:repeet:get_ids}
-{/exp:repeet:parse}
-{exp:weblog:calendar weblog="event_cal" show_future_entries="yes" sort="asc"}
-<p class="next_month"><a href="{previous_path=events/}">&#8592; Previous Month</a> | <a href="#ads">Back to Top</a> | <a href="{next_path=events/}">Next Month &#8594;</a></p>
-{/exp:weblog:calendar}
-</div>
-</div>
 <div id="footer">
 <div id="footer_nav">
 <div id="destination">

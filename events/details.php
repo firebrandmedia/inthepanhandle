@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>{exp:weblog:entries weblog="event_cal" disable="category_fields|pagination|member_data|trackbacks" limit="1" show_future_entries="yes" show_expired="yes"}{title}{/exp:weblog:entries} | Upcoming Local Events | InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>{exp:calendar:events orderby="title" sort="asc" event_id="{segment_3}" date_range_start="99 months ago" show_months="999" dynamic="off"}{event_title}{/exp:calendar:events} | Upcoming Local Events | InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
 
@@ -96,7 +96,7 @@
 {/if}
 <div id="search_box">
 <div id="search">
-{exp:search:simple_form weblog="news|bus_dir|event_cal|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
+{exp:search:simple_form weblog="news|bus_dir|calendar_events|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
 <p><input class="txt" type="text" name="keywords" id="keywords" onfocus="if
 (this.value==this.defaultValue) this.value='';" value="I'm looking for…" size="18" maxlength="100" /> <input type="image" src="/images/ui/search_btn.gif" align="right" value="Search" /></p>
 {/exp:search:simple_form}
@@ -113,7 +113,7 @@
 <ul>
 <li id="t-home"><a href="{path='SITE_INDEX'}/" title="The InThePanhandle.com Homepage">Home</a></li>
 <li id="t-news"><a href="{path='SITE_INDEX'}/news/" title="Eastern WV News, Articles, Opinion">News</a></li>
-<li id="t-event_cal"><a href="{path='SITE_INDEX'}/events/{current_time format="%Y"}/{current_time format="%m"}/{current_time format="%d"}/" title="Upcoming Events in Martinsburg, Berkeley Springs, Shepherdstown…">Events</a></li>
+<li id="t-event_cal"><a href="{path='SITE_INDEX'}/events/" title="Upcoming Eastern Panhandle Events">Events</a></li>
 <!--<li id="t-shopping"><a href="{path='SITE_INDEX'}/shop_local/" title="Shop Local: Eastern Panhandle Marketplace">Shop Local</a></li>
 <li id="t-movies"><a href="{path='SITE_INDEX'}/events/movie_showtimes?zipcode=25401" title="Local movie showtimes and online ticket ordering">Movies</a></li>-->
 <li id="t-restaurant"><a href="{path='SITE_INDEX'}/business_directory/restaurant_menus/" title="View and Print Local Restaurant Menus">Restaurant Menus</a></li>
@@ -142,7 +142,7 @@
 {if logged_in}
 <div id="container">
 <li>Welcome back <b>{screen_name}</b></li>
-<li><a href="{path=''users/edit_profile"}" title="Access your Favorites, Articles, Events, Profile…"">My Stuff</a></li>
+<li><a href="{path='users/edit_profile'}" title="Access your Favorites, Articles, Events, Profile…">My Stuff</a></li>
 <li><a href="http://www.inthepanhandle.com/itpcore/" target="_blank" title="Use the Control Panel to edit your articles, events or business listing.">Control Panel</a></li>
 <!--<li><a href="{path=''advertise/"}" title="Add your business to InThePanhandle.com for $10 per month.">Ads starting at $10/mo</a></li>-->
 <li class="last"><a href="{path='LOGOUT'}" title="You will be logged out and returned to the InThePanhandle.com homepage.">Logout</a></li>
@@ -186,114 +186,85 @@
 </div>
 </div>
 <div id="body_content">
+<!--Main Calendar Content Here-->
+    <div id="event_calendar_details">
 
-<div id="event_calendar_details">
-{exp:weblog:entries weblog="event_cal" show_future_entries="yes" limit="1" show_expired="yes" disable="pagination|member_data|trackbacks"}
 
-<!--Favorite Start-->
-{if logged_in}
-    {exp:favorites:saved}
-        {if not_saved}
-            <span class="favorited">
-                <span class="Favorites_Status"></span>
-                <a class="Favorites_Save_Full" href="{permalink="embeds/fav-it/"}"><img src="/images/ui/fave.png" title="Save to Favorites" /></a>
-                <a class="Favorites_Save Favorites_Trigger" style="display:none;" href="{permalink="embeds/fav-it/"}"><img src="/images/ui/fave.png" title="Save to Favorites" /></a>
-                <a class="Favorites_Delete Favorites_Trigger" style="display:none;" href="{permalink="embeds/fav-it/delete/"}"><img src="/images/ui/fave_remove.png" title="Remove from Favorites" /></a>
-            </span>
-        {/if}
-        {if saved}
-            <span class="favorited">
-                <span class="Favorites_Status"></span>
-                <a class="Favorites_Save Favorites_Trigger" style="display:none;" href="{permalink="embeds/fav-it/"}"><img src="/images/ui/fave.png" title="Save to Favorites" /></a>
-                <a class="Favorites_Delete Favorites_Trigger" href="{permalink="embeds/fav-it/delete/"}"><img src="/images/ui/fave_remove.png" title="Remove from Favorites" /></a>
-            </span>
-        {/if}
-    {/exp:favorites:saved}
-{if:else}
-    <span class="loginfavorites">
-      <a class="signin menu-open" href="login">Sign-In to Save Event</a><br />
-      <a class="createaccount" href="http://www.inthepanhandle.com/local/users/register/">Or Create an Account</a>
-</span>
+
+		<div id="maincolumn">
+
+			<div id="leftcolumn">
+
+{if logged_in_group_id == "1"}
+				{if segment_4 == "success"}<div class="calendar_success">Event has been successfully created!</div>{/if}
+				{if segment_4 == "updated"}<div class="calendar_success">Event has been successfully updated!</div>{/if}
+<p><b>Admin:</b> <a href="{path='events/edit'}{segment_3}/">Update this Event</a></p>
 {/if}
-<!--Favorite End-->
 
-<h1 class="title">{title}</h1>
+<div id="events_calendar">
 
-<p class="article_author"><b>Author:</b> {author} <!--| <b>Published:</b> {entry_date format="%m/%d/%Y"}--> | {exp:tracker:stats weblog="event_cal" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views | Short URL: <a href="http://itpwv.com/local{exp:shrimp:relative_url template="e" entry_id="{entry_id}"}">http://itpwv.com/local{exp:shrimp:relative_url template="e" entry_id="{entry_id}"}</a></p>
-<div id="share">
-{exp:fbc:like
-      href="{url_title_path='events/details'}"
-      send="true"
-      layout="standard"
-      width="650"
-      show_faces="false"
-      action="like"
-      colorscheme="light"
-      font="arial"
-}
-</div>
-
-<span class="edit_this">{exp:edit_this:entry entry_id="{entry_id}" weblog_id="{weblog_id}" author_id="{author_id}"}</span>
-
-{if event_image}{exp:imgsizer:size src="{event_image}" width="400"}
+{exp:calendar:events orderby="title" sort="asc" event_id="{segment_3}" date_range_start="99 months ago" show_months="999" dynamic="off"}
+   {if no_results}No Results{/if}
+   <div class="event">
+      <h1>{event_title}</h1>
+       <p><a href="{path='events/export/event'}{segment_3}/">Download event to your calendar</a></p>
+<!--       <p>{exp:tracker:stats weblog="calendar_events" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views</p>-->
+      <p><b>Date:</b> {event_first_date format="%F %j, %Y at %g:%i%a"}{if event_never_ends} (never ends){if:else}{if "{event_first_date format='%Y%m%d%g%i%a'}" != "{event_last_date format='%Y%m%d%g%i%a'}"} <b>to:</b> {if "{event_first_date format='%Y%m%d'}" != "{event_last_date format='%Y%m%d'}"}{event_last_date format="%l, %F %j, %Y at %g:%i%a"}{if:else}{event_last_date format="%g:%i%a"}{/if}{/if}{/if}</p>
+       {if event_image}{exp:imgsizer:size src="{event_image}" width="400"}
 <img class="article_image"  src="{sized}" />{/exp:imgsizer:size}{/if}
+      <p><b>Details:</b> {event_details}</p>
+      <p><b>Location:</b> {if event_location}{event_location}{/if} {if event_address}{event_address},{/if} {if event_city}{event_city}{/if} {if event_zip}{event_zip}{/if}</p>
+       {if event_cost}<p><b>Event Cost:</b> {event_cost}</p>{/if}
+      {if event_contact_name}<p><b>Contact:</b> {event_contact_name}</p>{/if}
+       {if event_contact_phone}<p><b>Phone:</b> {event_contact_phone}</p>{/if}
+       {if event_contact_email}<p><b>Email:</b> {event_contact_email}</p>{/if}
+       {if event_website}<p><b>Website:</b> {event_website}</p>{/if}
+      <p><b>From Calendar:</b> <a href="{path='events/calendars'}{event_calendar_url_title}/">{event_calendar_title}</a></p>
 
-{event_details}
+   </div>
+{/exp:calendar:events}
 
-{exp:tracker:pixeltrack weblog="event_cal" entry_id="{entry_id}" entry_identifier="{entry_id}"}<img src="{pixeltrack_url}" />{/exp:tracker:pixeltrack}
+      <h3 class="occurrences">Upcoming Occurrences:</h3>
+      <ul>
+         {exp:calendar:occurrences event_id="{segment_3}" date_range_start="today" date_range_end="3 months" upcoming_occurrences_limit="5" prior_occurrences_limit="0" dynamic="off"}
+         <li>{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}{if "{occurrence_start_date format='%Y%m%d%g%i%a'}" != "{occurrence_end_date format='%Y%m%d%g%i%a'}"} - {if "{occurrence_start_date format='%Y%m%d'}" != "{occurrence_end_date format='%Y%m%d'}"}{occurrence_end_date format="%l, %F %j, %Y at %g:%i%a"}{if:else}{occurrence_end_date format="%g:%i%a"}{/if}{/if} &nbsp; <small><a href="{path='events/day'}{occurrence_start_date format="%Y/%m/%d"}/">View other events on this day</a></small></li>
+         {if no_results}
+         <li>No upcoming occurrences in the timeframe specified for this event.</li>
+         {/if}
+         {/exp:calendar:occurrences}
+      </ul>
 
- {exp:fbc:comments
-      href="{url_title_path=events/details'}"
-      num_posts="8"
-      width="680"
-      colorscheme="light"
-   }
+<!--
+      <h3 class="occurrences">Past Occurrences:</h3>
+      <ul>
+         {exp:calendar:occurrences event_id="{segment_3}" date_range_start="3 months ago" date_range_end="today" upcoming_occurrences_limit="0" prior_occurrences_limit="3" dynamic="off"}
+         <li>{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}{if "{occurrence_start_date format='%Y%m%d%g%i%a'}" != "{occurrence_end_date format='%Y%m%d%g%i%a'}"} - {if "{occurrence_start_date format='%Y%m%d'}" != "{occurrence_end_date format='%Y%m%d'}"}{occurrence_end_date format="%l, %F %j, %Y at %g:%i%a"}{if:else}{occurrence_end_date format="%g:%i%a"}{/if}{/if} &nbsp; <small><a href="{path='events/day'}{occurrence_start_date format="%Y/%m/%d"}/">View other events on this day</a></small></li>
+         {if no_results}
+         <li>No prior occurrences in the timeframe specified for this event.</li>
+         {/if}
+         {/exp:calendar:occurrences}
+      </ul>
+-->
 
-</div>
-<div id="event_sidebar">
-
-<div class="event_details">
-<h2>When:</h2>
-<ul>
-
-{exp:repeet:list_dates entry_id="{entry_id}" repeet_from="today" repeet_to="1 year" event_limit=”5” repeet_include_dates_field="event_dates" repeet_exclude_dates_field="exclude_dates" repeet_interval_field="repeat_interval"}
-  <li><a href="http://www.inthepanhandle.com/local/events/{repeet_start_time format="%Y/%m/%d/"}" title="View other events happening on {repeet_start_time format="%F %j, %Y"}"> {repeet_start_time format="%l, %F %d, %Y %g:%i %A"}</a></li>
-{if repeet_no_results}
-<li>This event has already occurred.</li>
-{/if}
-{/exp:repeet:list_dates}
-
-                    {if event_duration}<li><b>Duration:</b> {event_duration} hours</li>{/if}
-                    </ul>
-                </div>
-
-                 {if event_location}<div class="event_details">
-                 <h2>Where:</h2>
-                 <ul>
-                 <li><b>Location:</b><br />  {event_location}</li>
-                 </ul>
-                </div>{/if}
-
-                {if event_cost}<div class="event_details">
-                 <h2>How Much:</h2>
-                 <ul>
-                 <li><b>Cost:</b> {event_cost}</li>
-                 </ul>
-                 </div>{/if}
-
-                <div class="event_details">
-                   <h2>Contact Info:</h2>
-                    <ul>
-                    {if event_contact_name}<li><b>Contact:</b> {event_contact_name}</li>{/if}
-                    {if event_contact_email}<li><b>Email:</b> {event_contact_email}</li>{/if}
-                    {if event_website}<li><b>Website:</b> {event_website}</li>{/if}
-                    {if event_contact_phone}<li><b>Phone:</b> {event_contact_phone}</li>{/if}
-                    {if event_doc}<li><b>Download(s):</b> <a href="http://www.inthepanhandle.com{event_doc}">{title} Download</a></li>{/if}
-                   </ul>
-                </div>
 
 </div>
-{/exp:weblog:entries}
+
+			</div>
+
+		</div>
+
+
+
+    </div>
+<!--Main Calendar Content Here-->
+
+<!--Sidebar Calendar Content Here-->
+    <div id="event_sidebar">
+
+        {embed="events/side_column"}
+
+    </div>
+<!--Sidebar Calendar Content Here-->
 
 <div class="clear_both"></div>
 </div>
