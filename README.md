@@ -111,5 +111,9 @@ Transitioned Event Calendar from Repeet plugin to Solspace Calendar module
     - Updated Search Results page to link to events
     - Removed Repeet-specific weblog fields
     - Removed Repeet plugin
+<<<<<<< HEAD
+    - Pushed new event calendar to live site
+>>>>>>> FETCH_HEAD
+=======
     - Pushed new event calendar to live site
 >>>>>>> FETCH_HEAD
