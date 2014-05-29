@@ -90,4 +90,26 @@ Removed MD Eexcerpt Code from:
 
 Removed MD Eexcerpt Plugin
 
+<<<<<<< HEAD
+Removed Blacklist / Whitelist Module
+
+Removed Twitter Timeline Plugin
+=======
 Removed Blacklist / Whiteliste Module
+
+05/28/14
+==============
+
+Transitioned Event Calendar from Repeet plugin to Solspace Calendar module
+
+    - Updated event calendar templates with Solspace Calendar code
+    - Moved future events to new calendar weblog
+    - Updated navigational links to point to new calendar page
+    - Disabled Event Calendar (Repeet) weblog
+    - Transisitioned user groups to new Event Calendar (Solspace)
+    - Updated search form to search within the Event Calendar (Solspace) weblog
+    - Updated Search Results page to link to events
+    - Removed Repeet-specific weblog fields
+    - Removed Repeet plugin
+    - Pushed new event calendar to live site
+>>>>>>> FETCH_HEAD

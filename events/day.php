@@ -1,7 +1,8 @@
+{exp:fbc:prepare_page}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Search Results | InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>Upcoming Local Events Calendar | InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
 
@@ -85,9 +86,9 @@
         });
     });
 </script>
-
+{exp:shrimp:meta_tag template="e" entry_id="{entry_id}"}
 </head>
-<body id="more">
+<body id="event_cal">
 {if logged_in && member_group == "1"}
     <div style="position: absolute; top: 0; left: 0; position: fixed; background-color: #000; color: #fff; font-size: 9px; padding: 5px;">
         {elapsed_time} seconds / {total_queries} queries
@@ -102,15 +103,12 @@
 </div>
 </div>
 </div>
-
 <div id="content">
 <div id="header">
 <div id="header_content">
-<!--Logo Global Variable-->
-    <div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
-<!--Logo Global Variable-->
-<!--Navigation Global Variable-->
-    <div id="navigation">
+<div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
+
+<div id="navigation">
 <div id="nav">
 <ul>
 <li id="t-home"><a href="{path='SITE_INDEX'}/" title="The InThePanhandle.com Homepage">Home</a></li>
@@ -133,7 +131,7 @@
 </ul>
 </div>
 </div>
-<!--Navigation Global Variable-->
+
 <div class="clear_both"></div>
 </div>
 </div>
@@ -188,49 +186,89 @@
 </div>
 </div>
 <div id="body_content">
-<!--Search Results Here-->
-<div id="search_results_page">
-<h1>Thank you for searching with us. Here's what we found…</h1>
-<p class="your_results">Your search for <span class="hilite">{exp:search:keywords}</span> found {exp:search:total_results}{total_results}{/exp:search:total_results} result{if "{exp:search:total_results}" != 1}s{/if}.</p>
 
-<table class="search_results" cellpadding="10" cellspacing="0" width="100%">
-<tr>
-<th align="left">{lang:title}</th>
-<th align="left">{lang:excerpt}</th>
-</tr>
-<tr>
-{exp:key_search:results groupby="channel" group_sort="asc" group_repeat="no" excerpt_size="60" parameters=”highlight”}
-{if weblog_id=="28"}
-<td class="{switch}" width="30%" valign="top"><b><a href="{site_url}local/events/details/{entry_id}">{title}</a></b></td>
-<td class="{switch}" width="70%" valign="top">{excerpt}</td>
+    <div id="event_calendar_details">
+
+        <div id="event_calendar">
+    		<div id="maincolumn">
+
+			<div id="leftcolumn">
+
+				{if segment_3 == "by_calendar"}
+					{exp:calendar:calendars calendar_name="{segment_4}" dynamic="off"}
+					<div class="calendar">
+						<h2>Upcoming <span>{calendar_title}</span> Events</h2>
+					</div>
+					{/exp:calendar:calendars}
+				{/if}
+
+<div id="dc_calendar">
+
+{exp:calendar:cal pad_short_weeks="n"
+   {if segment_3 == "by_calendar"}
+      {if segment_5 == ''}calendar_name="{segment_4}" date_range_start="today" date_range_end="today"{/if}
+      {if segment_5 != ''}calendar_name="{segment_4}" date_range_start="{segment_5}-{segment_6}-{segment_7}" date_range_end="{segment_5}-{segment_6}-{segment_7}"{/if}
+   {/if}
+   {if segment_3 != "by_calendar"}
+      {if segment_3 == ''}date_range_start="today" date_range_end="today"{/if}
+      {if segment_3 != ""}date_range_start="{segment_3}-{segment_4}-{segment_5}" date_range_end="{segment_3}-{segment_4}-{segment_5}"{/if}
+   {/if}
+   dynamic="off"
+}
+
+   {display_each_day}
+   <div class="header">
+      <div class="center">
+         <h4>{day format="%l, %F %d, %Y"} <span>({day_event_total} events)</span></h4>
+      </div>
+      <div class="left">
+         <a href="{path='events/day'}{if segment_3 == "by_calendar"}by_calendar/{segment_4}/{/if}{prev_day format="%Y/%m/%d"}/">Yesterday</a>
+      </div>
+   </div>
+   {display_each_hour}
+   <h4 {if time == "00:00"}class="thickline"{/if}>{time format="%g %a"} <span>({if hour_event_total == "0"}no events{if:else}{hour_event_total} event{if hour_event_total > "1"}s{/if}{/if})</span></h4>
+   {events}
+{if event_multi_day == FALSE && event_all_day == FALSE}
+   <div class="event">
+         <h2><a href="{path='events/details'}{event_id}/">{event_title}</a> <span>({event_start_date format="%g:%i %a"}{if event_end_date}{if "{event_start_date format='%g:%i %a'}" != "{event_end_date format='%g:%i%a'}"} - {event_end_date format="%g:%i%a"}{/if}{/if})</span></h2>
+         <!--<p><b>From Calendar:</b> <a href="{path='events/calendars'}{event_calendar_url_title}/">{event_calendar_title}</a></p>
+         <p><b>Location:</b> {event_location}</p>
+         <p><b>Details:</b> {event_summary}<p>-->
+   </div>
 {if:else}
-<td class="{switch}" width="40%" valign="top"><b><a href="{auto_path}">{title}</a></b></td>
-<td class="{switch}" width="60%" valign="top">{excerpt}</td>
+   <div class="event_top">
+         <h2><a href="{path='events/details'}{event_id}/">{event_title}</a> <span>({if event_multi_day == FALSE && event_all_day == TRUE}all day{if:else}{event_start_date format="%F %j, %Y at %g:%i%a"}{if event_end_date}{if "{event_start_date format='%g:%i%a'}" != "{event_end_date format='%g:%i%a'}"} - {event_end_date format="%F %j, %Y at %g:%i%a"}{/if}{/if}{/if})</span></h2>
+         <p><b>From Calendar:</b> <a href="{path='events/calendars'}{event_calendar_url_title}/">{event_calendar_title}</a> &nbsp; &nbsp; <b>Location:</b> {event_location} &nbsp; &nbsp; <a href="{path='events/details'}{event_id}/">View Details</a></p>
+   </div>
 {/if}
-</tr>
+   {/events}
+   {/display_each_hour}
+    <div class="right">
+         <a href="{path='events/day'}{if segment_3 == "by_calendar"}by_calendar/{segment_4}/{/if}{next_day format="%Y/%m/%d"}/">Tomorrow</a>
+      </div>
+   {/display_each_day}
+{/exp:calendar:cal}
 
-{/exp:key_search:results}
-
-</table>
-
-
-<p class="try_advanced">Not exactly what you were looking for?  How about trying our <a href="{site_url}local/search/advanced/">Advanced Search?</a> It's super-terrific!</p>
-<div id="paginate">
-{exp:bu_search_pagination}
-{if prev_page_path}
- <a href="{path={prev_page_path}}">&#8592; Prev</a>
-{/if}
-
-Page {current_page} of {total_pages}
-
-{if next_page_path}
- <a href="{path={next_page_path}}">Next &#8594;</a>
-{/if}
-{/exp:bu_search_pagination}
 </div>
+
+			</div>
+
+		</div>
+
+    </div>
+
+    </div>
+
+    <div id="event_sidebar">
+
+        {embed="events/side_column"}
+
+
+    </div>
+
+<div class="clear_both"></div>
 </div>
-<!--Search Results Here-->
-</div>
+
 <div id="footer">
 <div id="footer_nav">
 <div id="destination">
@@ -362,4 +400,3 @@ woopraTracker.track();
 
 </body>
 </html>
-

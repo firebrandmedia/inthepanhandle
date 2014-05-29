@@ -1,23 +1,19 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
+<!--Calendar Index-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Search Results | InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>{segment_3}/{segment_2} Events | InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
+<meta name="apple-itunes-app" content="app-id=384904457">
 
-<!--Stylesheets-->
 <link rel="stylesheet" href="/css/itp.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/css/thickbox.css" type="text/css" media="screen" />
 <link rel='stylesheet' type='text/css' media='screen' href='/css/jqModal.css' />
-<link rel="stylesheet" href="/nivo_slider/nivo-slider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/nivo_slider/themes/default/default.css" type="text/css" media="screen" />
+
 <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
 
-<!--Mobile Specific-->
 <link rel="apple-touch-icon" href="http://inthepanhandle.com/images/ui/iphonetouch.jpg">
-<meta name="apple-itunes-app" content="app-id=384904457">
-
-<!--RSS Feeds-->
 <link rel="alternate" type="application/rss+xml" title="ITP Articles Feed" href="{path='SITE_INDEX'}/media/news_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP Event Cal Feed" href="{path='SITE_INDEX'}/media/events_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP New Businesses Feed" href="{path='SITE_INDEX'}/media/business_rss/" />
@@ -25,14 +21,30 @@
 <link rel="alternate" type="application/rss+xml" title="ITP New Coupons Feed" href="{path='SITE_INDEX'}/media/coupons_rss/" />
 <link rel="alternate" type="application/rss+xml" title="ITP Flickr Feed" href="http://feeds.feedburner.com/UploadsFromInthepanhandlecom/" />
 
-<!--JS Files-->
-<!--<script type="text/javascript" src="http://use.typekit.com/jik1hqx.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js'></script>
-<script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="http://use.typekit.com/jik1hqx.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type='text/javascript' src='/js/jquery-1.2.1.pack.js'></script>
+<script type="text/javascript" src="/js/thickbox.js"></script>
+<script type="text/javascript" src="/js/s3Slider.js"></script>
+<script type="text/javascript" src="/js/swfobject.js"></script>
+<script src='/js/jqModal.js' type='text/javascript'></script>
 
-<!--JS Scripts-->
-<!--Twitter Menu Drop Down-->
+<script type="text/javascript">
+$().ready(function() {
+  var triggers = $('a.ex3bTrigger');
+  $('#ex3b').jqm({
+   trigger: triggers,
+    ajax: '@href',
+    target: 'div.jqmAlertContent',
+    overlay: 0
+    });
+  if($.browser.msie) {
+  $('div.jqmAlert .jqmClose').hover(
+    function(){ $(this).addClass('jqmCloseHover'); },
+    function(){ $(this).removeClass('jqmCloseHover'); });
+  }
+});
+</script>
 <script type="text/javascript">
         $(document).ready(function() {
 
@@ -55,40 +67,10 @@
         });
 </script>
 
-<!--Save as Favorite-->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('a.Favorites_Save') .click (function() {
-            var link = $(this).attr('href')
-            $('.Favorites_Status').load(link, function() {
-                    $('.Favorites_Delete').show();
-                });
-            $(this).hide();
-            return false;
-        });
-        $('a.Favorites_Save_Full') .click (function() {
-            var link = $(this).attr('href')
-            $('.Favorites_Status').load(link, function() {
-                    $('.Favorites_Delete').show();
-                });
-            $(this).hide();
-            return false;
-        });
-
-        $('a.Favorites_Delete') .click (function() {
-            var link = $(this).attr('href')
-            $('.Favorites_Status').load(link, function() {
-                    $('.Favorites_Save').show();
-                });
-            $(this).hide();
-            return false;
-        });
-    });
-</script>
-
 </head>
-<body id="more">
-{if logged_in && member_group == "1"}
+<body id="event_cal">
+<!-- Search Global Variable -->
+    {if logged_in && member_group == "1"}
     <div style="position: absolute; top: 0; left: 0; position: fixed; background-color: #000; color: #fff; font-size: 9px; padding: 5px;">
         {elapsed_time} seconds / {total_queries} queries
     </div>
@@ -102,15 +84,13 @@
 </div>
 </div>
 </div>
-
+<!-- Search Global Variable -->
 <div id="content">
 <div id="header">
 <div id="header_content">
-<!--Logo Global Variable-->
-    <div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
-<!--Logo Global Variable-->
-<!--Navigation Global Variable-->
-    <div id="navigation">
+<div id="logo"><a href="{path='SITE_INDEX'}/" title="InThePanhandle.com is your Eastern WV Community Website."><img border="0" src="/images/ui/logo_header.jpg" alt="inthepanhandle.com - The eastern panhandle, West Virginia community website."/></a></div>
+
+<div id="navigation">
 <div id="nav">
 <ul>
 <li id="t-home"><a href="{path='SITE_INDEX'}/" title="The InThePanhandle.com Homepage">Home</a></li>
@@ -133,7 +113,7 @@
 </ul>
 </div>
 </div>
-<!--Navigation Global Variable-->
+
 <div class="clear_both"></div>
 </div>
 </div>
@@ -185,51 +165,15 @@
 <div id="advertising">
 <div id="ads">
 
+
 </div>
 </div>
 <div id="body_content">
-<!--Search Results Here-->
-<div id="search_results_page">
-<h1>Thank you for searching with us. Here's what we found…</h1>
-<p class="your_results">Your search for <span class="hilite">{exp:search:keywords}</span> found {exp:search:total_results}{total_results}{/exp:search:total_results} result{if "{exp:search:total_results}" != 1}s{/if}.</p>
+<!--Calendar Content Here-->
+    <div id="event_calendar">
 
-<table class="search_results" cellpadding="10" cellspacing="0" width="100%">
-<tr>
-<th align="left">{lang:title}</th>
-<th align="left">{lang:excerpt}</th>
-</tr>
-<tr>
-{exp:key_search:results groupby="channel" group_sort="asc" group_repeat="no" excerpt_size="60" parameters=”highlight”}
-{if weblog_id=="28"}
-<td class="{switch}" width="30%" valign="top"><b><a href="{site_url}local/events/details/{entry_id}">{title}</a></b></td>
-<td class="{switch}" width="70%" valign="top">{excerpt}</td>
-{if:else}
-<td class="{switch}" width="40%" valign="top"><b><a href="{auto_path}">{title}</a></b></td>
-<td class="{switch}" width="60%" valign="top">{excerpt}</td>
-{/if}
-</tr>
-
-{/exp:key_search:results}
-
-</table>
-
-
-<p class="try_advanced">Not exactly what you were looking for?  How about trying our <a href="{site_url}local/search/advanced/">Advanced Search?</a> It's super-terrific!</p>
-<div id="paginate">
-{exp:bu_search_pagination}
-{if prev_page_path}
- <a href="{path={prev_page_path}}">&#8592; Prev</a>
-{/if}
-
-Page {current_page} of {total_pages}
-
-{if next_page_path}
- <a href="{path={next_page_path}}">Next &#8594;</a>
-{/if}
-{/exp:bu_search_pagination}
-</div>
-</div>
-<!--Search Results Here-->
+    </div>
+<!--Calendar Content Here-->
 </div>
 <div id="footer">
 <div id="footer_nav">
@@ -362,4 +306,3 @@ woopraTracker.track();
 
 </body>
 </html>
-
