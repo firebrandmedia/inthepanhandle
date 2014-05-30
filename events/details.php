@@ -215,7 +215,7 @@
       <p><b>Details:</b> {event_details}</p>
       <p><b>Location:</b> {if event_location}{event_location}{/if} {if event_address}{event_address},{/if} {if event_city}{event_city}{/if} {if event_zip}{event_zip}{/if}</p>
        {if event_cost}<p><b>Event Cost:</b> {event_cost}</p>{/if}
-      {if event_contact_name}<p><b>Contact:</b> {event_contact_name}</p>{/if}
+       {if event_contact_name}<p><b>Contact:</b> {event_contact_name}</p>{/if}
        {if event_contact_phone}<p><b>Phone:</b> {event_contact_phone}</p>{/if}
        {if event_contact_email}<p><b>Email:</b> {event_contact_email}</p>{/if}
        {if event_website}<p><b>Website:</b> {event_website}</p>{/if}

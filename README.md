@@ -90,11 +90,10 @@ Removed MD Eexcerpt Code from:
 
 Removed MD Eexcerpt Plugin
 
-<<<<<<< HEAD
 Removed Blacklist / Whitelist Module
 
 Removed Twitter Timeline Plugin
-=======
+
 Removed Blacklist / Whiteliste Module
 
 05/28/14
@@ -111,9 +110,13 @@ Transitioned Event Calendar from Repeet plugin to Solspace Calendar module
     - Updated Search Results page to link to events
     - Removed Repeet-specific weblog fields
     - Removed Repeet plugin
-<<<<<<< HEAD
     - Pushed new event calendar to live site
->>>>>>> FETCH_HEAD
-=======
     - Pushed new event calendar to live site
->>>>>>> FETCH_HEAD
+
+05/28/14
+==============
+
+Updated Solspace Freeform module to 3.1.5
+
+Updated Solspace User module to 3.1.10
+
