@@ -120,3 +120,7 @@ Updated Solspace Freeform module to 3.1.5
 
 Updated Solspace User module to 3.1.10
 
+06/06/14
+==============
+
+EE 1.7.3 to 2.8.1 Upgrade
