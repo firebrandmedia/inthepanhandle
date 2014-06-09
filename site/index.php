@@ -1,8 +1,8 @@
-{exp:fbc:prepare_page}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dev.InThePanhandle.com | Your Eastern WV Community Website</title>
+<title>InThePanhandle.com | Your Eastern WV Community Website</title>
 <meta name="description" content="inthepanhandle.com is an eastern panhandle West Virginia community website that features local news, businesses, events, classifieds, restaurant menus and more for Berkeley Springs, Martinsburg, Shepherdstown, Inwood, Charles Town and other parts of eastern WV.">
 <meta name="keywords" CONTENT="eastern wv, martinsburg, inwood, shepherdstown, berkeley springs, charles town, west virginia, travel, tourism, events, lodging, news, classifieds, jobs, blogs, movies, restaurants">
 <meta name="viewport" content="width=1024" />
@@ -276,7 +276,7 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 <!--Footer Start-->
 
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">

@@ -139,7 +139,7 @@ $().ready(function() {
 <p class="fine_print">Do you like using these coupons as much as we like supplying them? If so, tell your favorite merchants to get their act together and put their coupons up on InThePanhandle.com!</p>
 </div>
 </div>
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">

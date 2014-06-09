@@ -227,7 +227,7 @@ url_title="inthepanhandle.com_website_updates" }(<a href="{path='SITE_INDEX'}/it
 <!--Copyright-->
 </div>
 <!--Footer-->
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">

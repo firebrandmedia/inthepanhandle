@@ -195,7 +195,7 @@ function createMarker(latlng, name, html) {
 <p class="fine_print">Do you like using these restaurant menus as much as we like supplying them? If so, tell your favorite restaurants to get their act together and put their menus up on InThePanhandle.com!</p>
 </div>
 </div>
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">

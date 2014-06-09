@@ -1,4 +1,4 @@
-{exp:fbc:prepare_page}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -219,6 +219,7 @@
        {if event_contact_phone}<p><b>Phone:</b> {event_contact_phone}</p>{/if}
        {if event_contact_email}<p><b>Email:</b> {event_contact_email}</p>{/if}
        {if event_website}<p><b>Website:</b> {event_website}</p>{/if}
+{if event_doc}<p><b>Download Flyer:</b> <a href="{event_doc}">Download {title} Flyer</a></p>{/if}
       <p><b>From Calendar:</b> <a href="{path='events/calendars'}{event_calendar_url_title}/">{event_calendar_title}</a></p>
 
    </div>
@@ -360,7 +361,7 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 <!--Footer Start-->
 
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">

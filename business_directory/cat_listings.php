@@ -277,7 +277,7 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 <!--Footer Start-->
 
-{exp:fbc:prepare_page}
+
 
 <!-- Start Analytics tag -->
 <script type="text/javascript">
