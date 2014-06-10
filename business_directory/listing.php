@@ -303,16 +303,7 @@ Rated: {stars_overall_avg}
 {/exp:rating:stats} <a href="#rating">Read Reviews</a> | <a href="#add_rating">Add a Review</a></div>
 
 <div id="share">
-{exp:fbc:like
-      href="{url_title_path='business_directory/listing'}"
-      send="true"
-      layout="standard"
-      width="650"
-      show_faces="false"
-      action="like"
-      colorscheme="light"
-      font="arial"
-}
+
 </div>
 
 <span class="edit_this">{exp:edit_this:entry entry_id="{entry_id}" weblog_id="{weblog_id}" author_id="{author_id}"}</span>

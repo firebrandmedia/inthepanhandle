@@ -248,16 +248,7 @@ $(window).load(function() {
 <h1>{title}</h1>
 <p class="article_author"><b>Author:</b> {author} | <b>Published:</b> {entry_date format="%m/%d/%Y"} | {exp:tracker:stats weblog="news" entry_id="{entry_id}"}{tracker:alltime}{/exp:tracker:stats} Views | Short URL: <a href="http://itpwv.com/local{exp:shrimp:relative_url template="n" entry_id="{entry_id}"}">http://itpwv.com/local{exp:shrimp:relative_url template="n" entry_id="{entry_id}"}</a></p>
 <div id="share">
-{exp:fbc:like
-      href="{url_title_path='news/article'}"
-      send="true"
-      layout="standard"
-      width="650"
-      show_faces="false"
-      action="like"
-      colorscheme="light"
-      font="arial"
-}
+
 </div>
 
 <span class="edit_this">{exp:edit_this:entry entry_id="{entry_id}" weblog_id="{weblog_id}" author_id="{author_id}" class="edit_this"}</span>
@@ -299,13 +290,6 @@ $(window).load(function() {
 {body}
 
 {exp:tracker:pixeltrack weblog="news" entry_id="{entry_id}" entry_identifier="{entry_id}"}<img src="{pixeltrack_url}" />{/exp:tracker:pixeltrack}
-
- {exp:fbc:comments
-      href="{url_title_path=news/article'}"
-      num_posts="8"
-      width="680"
-      colorscheme="light"
-   }
 
 {/exp:weblog:entries}
 
