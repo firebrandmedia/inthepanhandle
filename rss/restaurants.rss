@@ -28,7 +28,6 @@
       <description><![CDATA[
 <span style="font-family: Arial,helvetica,sans-serif;">
 <p><a href="{file_download}">Click to View {title} Menu</a></p>
-{exp:tracker:pixeltrack weblog="restaurant_menus" entry_id="{entry_id}" entry_identifier="{entry_id}"}<img src="{pixeltrack_url}" />{/exp:tracker:pixeltrack}
 </span>
       ]]>
      </description>

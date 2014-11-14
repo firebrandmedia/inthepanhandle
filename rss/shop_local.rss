@@ -31,7 +31,6 @@
 <p>{prod_description} </p>
 <b><a href="{title_permalink=business_directory/product}">View complete details.</a></b>
 </span>
-{exp:tracker:pixeltrack weblog="products" entry_id="{entry_id}" entry_identifier="{entry_id}"}<img src="{pixeltrack_url}" />{/exp:tracker:pixeltrack}
 ]]>
 </description>
       <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>

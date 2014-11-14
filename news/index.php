@@ -76,7 +76,7 @@ $().ready(function() {
 {/if}
 <div id="search_box">
 <div id="search">
-{exp:search:simple_form weblog="news|bus_dir|calendar_events|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
+{exp:search:simple_form channel="news|bus_dir|calendar_events|coupons|products|restaurant_menus" show_future_entries="yes" show_expired="yes" results="10" search_in="everywhere" where="all" no_result_page="search/noresults"}
 <p><input class="txt" type="text" name="keywords" id="keywords" onfocus="if
 (this.value==this.defaultValue) this.value='';" value="I'm looking for…" size="18" maxlength="100" /> <input type="image" src="/images/ui/search_btn.gif" align="right" value="Search" /></p>
 {/exp:search:simple_form}
@@ -180,27 +180,12 @@ $().ready(function() {
 <div id="recent_news">
 <h2>Recent Articles</h2>
 <ul>
-{exp:weblog:entries weblog="news" orderby="date" offset="0" sort="desc" limit="10" dynamic="off" disable="categories|category_fields|member_data|trackbacks|pagination|custom_fields"}
+{exp:channel:entries channel="news" orderby="date" offset="0" sort="desc" limit="10" dynamic="off" disable="categories|category_fields|member_data|trackbacks|pagination|custom_fields"}
 <li><a href="{title_permalink=news/article}">{title}</a></li>
-{/exp:weblog:entries}
+{/exp:channel:entries}
 </ul>
 </div>
-<div id="most_popular">
-<h2>Today's Buzz</h2>
-<ul>
-{exp:tracker:entries weblog="news" interval="today" limit="8" disable="categories|category_fields|member_data|trackbacks|pagination|custom_fields"}
-   <li><span class="views">{tracker:total_views}</span><a href="{path="site_index"}/news/article/{tracker:url_title}">{tracker:title}</a></li>
-{/exp:tracker:entries}
-</ul>
-</div>
-<div id="most_popular">
-<h2>Most Popular Articles, last 7 days</h2>
-<ul>
-{exp:tracker:entries weblog="news" interval="week" limit="8" status="open" show_expired="no" disable="categories|category_fields|member_data|trackbacks|pagination|custom_fields"}
-   <li><span class="views">{tracker:total_views}</span><a href="{path="site_index"}/news/article/{tracker:url_title}">{tracker:title}</a></li>
-{/exp:tracker:entries}
-</ul>
-</div>
+
 <div class="clear_both"></div>
 </div>
 
@@ -208,9 +193,9 @@ $().ready(function() {
 <div id="news_categories">
 <h2>Browse InThePanhandle.com News Archives by Category</h2>
 
-{exp:weblog:categories weblog="news" id="my_custom_id"}
+{exp:channel:categories channel="news" id="my_custom_id"}
 <a href="{path='news/category_archives'}">{category_name}</a>
-{/exp:weblog:categories}
+{/exp:channel:categories}
 
 <div class="clear_both"></div>
 </div>
@@ -370,8 +355,8 @@ $().ready(function() {
 </div>
 </div>
     <div id="copyright">
-    <p>&copy; 2004 - {current_time format="%Y"} Firebrand Media, LLC / InThePanhandle.com {exp:weblog:entries weblog="itp_blog" limit="1" dynamic="off" disable="categories|trackbacks|member_data|pagination"
-    url_title="inthepanhandle.com_website_updates" }(<a href="{path='SITE_INDEX'}/itp_blog/article/inthepanhandle.com_website_updates/" title="View our progress as we develop with version updates">{title}</a>){/exp:weblog:entries} Version 3 Launched 09.26.09 | <a href="http://www.firebrand-media.com">Firebrand Media site design</a></p>
+    <p>&copy; 2004 - {current_time format="%Y"} Firebrand Media, LLC / InThePanhandle.com {exp:channel:entries channel="itp_blog" limit="1" dynamic="off" disable="categories|trackbacks|member_data|pagination"
+    url_title="inthepanhandle.com_website_updates" }(<a href="{path='SITE_INDEX'}/itp_blog/article/inthepanhandle.com_website_updates/" title="View our progress as we develop with version updates">{title}</a>){/exp:channel:entries} Version 3 Launched 09.26.09 | <a href="http://www.firebrand-media.com">Firebrand Media site design</a></p>
     </div>
 
 </div>

@@ -42,7 +42,6 @@
 {exp:repeet:list_dates entry_id="{entry_id}" repeet_from="today" repeet_to="1 year" event_limit=”5” repeet_include_dates_field="event_dates" repeet_exclude_dates_field="exclude_dates" repeet_interval_field="repeat_interval"}
 {repeet_start_time format="%l, %F %d, %Y %g:%i %A"}<br />
 {/exp:repeet:list_dates}
-{exp:tracker:pixeltrack weblog="event_cal" entry_id="{entry_id}" entry_identifier="{entry_id}"}<img src="{pixeltrack_url}" />{/exp:tracker:pixeltrack}</span>
        ]]></description>
       <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
       <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:15%Q"}</dc:date>

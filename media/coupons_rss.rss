@@ -44,7 +44,6 @@
 
 <b><a href="{title_permalink=business_directory/coupons}">View complete details including phone, email & map to business.</a></b>
 </span>
-<img src="{exp:tracker:pixeltrack weblog="coupons" entry_id="{entry_id}" entry_identifier="{entry_id}"}" />
 ]]>
 </description>
       <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
